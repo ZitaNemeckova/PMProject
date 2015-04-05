@@ -31,7 +31,8 @@ public class Example {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+        
+       /* Scanner s = new Scanner(System.in);
         //let repository know we're alive
         System.out.println("HELLO\t1.0");
 
@@ -56,6 +57,15 @@ public class Example {
                 System.err.println("Uhhuh!\nReceived: " + command);
                 System.exit(0);
             }
+            System.out.println(command);
+        }*/
+        while(true){
+                currentRequest = "121";
+                currentContext = "whatever ";
+                currentWork = "/test";
+                currentInput = "test.txt";
+                worker = new ExampleWorker();
+                worker.start();
         }
     }
 
@@ -115,19 +125,21 @@ public class Example {
             number = 0.0000001;
         return distribution;
     }
-    private static double[] getDistribution(double probabilityOfZero, double probabilityOfMostFrequent ,int mostFrequent, int minimum, int maximum){
+    private static double[] getDistribution(double probabilityOfZero, double probabilityOfMostFrequent , double probabilityOfMax, double probabilityOfMin,int mostFrequent, int minimum, int maximum){
         double[] distribution = new double[100];
         for (double number : distribution)
             number = 0.0000001;
         distribution[0] = probabilityOfZero;
         distribution[mostFrequent] = probabilityOfMostFrequent;
-        for(int i = minimum; i < mostFrequent; i ++){
-            distribution[i] = 0;
-            //TODO
+        distribution[maximum] = probabilityOfMax;
+        distribution[minimum] = probabilityOfMin;
+        double m1 = (probabilityOfMostFrequent - probabilityOfMin)/(mostFrequent - minimum);
+        double m2 = (probabilityOfMostFrequent - probabilityOfMax)/(mostFrequent - maximum);
+        for(int i = minimum + 1; i < mostFrequent; i ++){
+            distribution[i] = probabilityOfMostFrequent - (mostFrequent - (i - minimum))*m1;
         }
-        for(int i = mostFrequent + 1; i <= maximum ; i ++){
-            distribution[i] = 0;
-            //TODO
+        for(int i = mostFrequent + 1; i < maximum ; i ++){
+            distribution[i] = probabilityOfMostFrequent - m2*(mostFrequent - (mostFrequent + i));
         }
         return distribution;
     }
