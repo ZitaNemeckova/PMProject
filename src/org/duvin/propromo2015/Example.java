@@ -71,6 +71,15 @@ public class Example {
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
+	
+    private static int[] getValues(String line) {
+        String[] parts = line.split(",");
+        int[] result = new int[parts.length];
+        for (int i = 0; i<parts.length; i++) {
+            result[i] = Integer.parseInt(parts[i]);
+        }
+        return result;
+    }
     /**
      * @param args the command line arguments
      */
@@ -433,7 +442,7 @@ public class Example {
                     }
                 } else {
                     //read context
-                    //context[round-1] = getValues(s.nextLine());
+                    context[round-1] = getValues(s.nextLine());
                     //now calculate based on context
                     for (int i = 0; i<1000; i++) {
                         myGuess[i] = getDistribution(row);
