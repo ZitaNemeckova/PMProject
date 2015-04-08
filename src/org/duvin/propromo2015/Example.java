@@ -442,7 +442,7 @@ public class Example {
                     }
                 } else {
                     //read context
-                    context[round-1] = getValues(s.nextLine());
+                    context[round-2] = getValues(s.nextLine());
                     //now calculate based on context
                     for (int i = 0; i<1000; i++) {
                         myGuess[i] = getDistribution(row);
