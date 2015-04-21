@@ -28,6 +28,7 @@ public class Example {
     private static int round = 0;
     private static DecimalFormat df = new DecimalFormat();
 	private static int row = 0;
+	private static double minimalValue = 0.00000000001;
 
     /**
      * @param args the command line arguments
