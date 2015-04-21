@@ -17,7 +17,6 @@ import java.util.Scanner;
  * @author Johannes Verwijnen <duvin@duvin.org>
  */
 public class Example {
-
     private static String refineryId = "";
     private static String currentContext;
     private static String currentRequest;
@@ -29,7 +28,6 @@ public class Example {
     private static DecimalFormat df = new DecimalFormat();
 	private static int row = 0;
 	private static double minimalValue = 0.00000000001;
-
     /**
      * @param args the command line arguments
      */
