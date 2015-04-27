@@ -86,17 +86,9 @@ public class Example {
         return sb.toString();
     }
 
-private static int[][] context;
-private static int round = 0;
-private static double minimalValue = 0.00000000001;
-private static double[] distribution ;
-private static double[][] transaction;
-private static double [][] prior;
-private static double [][] temp;
     /**
      * @param args the command line arguments
      */
-     
      private static double[] normalizeDistribution(double[] dis){
          double norm = 0;
          for(double probability:dis)
@@ -182,7 +174,8 @@ private static double [][] temp;
 					initialize();
 				}
                 for (int i = 0; i < 1000; i++) {
-                    myGuess[i] = double[] dis = getDistribution(i);
+					double[] dis = getDistribution(i);
+                    myGuess[i] = dis;
                 }
                 for (double[] vector : myGuess) {
                     if (Thread.currentThread().isInterrupted()) {
